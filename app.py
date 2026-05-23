@@ -193,6 +193,12 @@ async def health_check():
     }
 
 
+@app.get("/debug-headers")
+async def debug_headers(request: Request):
+    """临时调试接口 —— 查看 RapidAPI 转发的请求头"""
+    return {k: v for k, v in request.headers.items()}
+
+
 @app.post("/api/v1/analyze-reviews")
 async def analyze_reviews(body: AnalyzeRequest, request: Request):
     """
