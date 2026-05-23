@@ -196,7 +196,10 @@ async def health_check():
 @app.get("/debug-headers")
 async def debug_headers(request: Request):
     """临时调试接口 —— 查看 RapidAPI 转发的请求头"""
-    return {k: v for k, v in request.headers.items()}
+    return {
+        "headers": {k: v for k, v in request.headers.items()},
+        "proxy_secret_set": bool(os.getenv("RAPIDAPI_PROXY_SECRET")),
+    }
 
 
 @app.post("/api/v1/analyze-reviews")
