@@ -1,13 +1,18 @@
-# E-commerce Review Analyzer
+# E-commerce Review Analyzer API
 
-AI-powered e-commerce review analysis API. Extract structured insights from customer feedback — strengths, weaknesses, buyer personas, and sentiment distribution — all in a single API call.
+AI-powered e-commerce review analysis and AI sentiment analysis API for product review analysis. Extract structured insights from Shopify, Amazon, AliExpress, and other e-commerce data — strengths, weaknesses, buyer personas, and sentiment distribution — all in a single API call.
+
+**Keywords:** e-commerce data analysis, AI sentiment analysis, product review analysis, Shopify analytics, Amazon sellers tool, AliExpress review analyzer, ecommerce review analyzer, AI product insights, customer feedback analysis
 
 [![RapidAPI](https://img.shields.io/badge/RapidAPI-Get%20API-blue)](https://rapidapi.com/hd1019/api/e-commerce-review-analyzer)
 [![Railway](https://img.shields.io/badge/Railway-Deploy-green)](https://ecom-review-analyzer-production.up.railway.app)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## Overview
 
-Harness large language models to automatically analyze batches of customer reviews. Instead of manually reading through hundreds of reviews, get a consolidated, actionable report in seconds.
+The **E-commerce Review Analyzer API** harnesses large language models to automatically analyze batches of customer reviews from any platform — Shopify stores, Amazon listings, AliExpress products, or your own e-commerce site. Instead of manually reading through hundreds of reviews, get a consolidated, actionable report in seconds.
+
+Perfect for **Amazon sellers**, **Shopify merchants**, **AliExpress dropshippers**, and **e-commerce data analysts** who need to understand customer sentiment at scale.
 
 ### Returns
 
@@ -15,7 +20,7 @@ Harness large language models to automatically analyze batches of customer revie
 - **Severity Ratings** — Weaknesses tagged High / Medium / Low
 - **Buyer Persona** — Under 50 words, synthesized from review patterns
 - **Sentiment Distribution** — Positive / Negative / Neutral ratios
-- **Improvement Suggestion** — The single most impactful recommendation
+- **Improvement Suggestion** — The single most impactful recommendation for your e-commerce business
 
 ## Quick Start
 
