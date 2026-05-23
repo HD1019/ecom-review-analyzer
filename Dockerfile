@@ -8,7 +8,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 复制应用代码
-COPY app.py .
+COPY app.py keystore.py auth.py admin_routes.py .
 
 # Railway 通过 PORT 环境变量指定端口，默认 8000
 EXPOSE 8000
