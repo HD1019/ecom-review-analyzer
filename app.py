@@ -133,7 +133,7 @@ async def call_llm(reviews_text: str, product_name: Optional[str] = None) -> dic
 
     logger.info("调用 LLM: model=%s, url=%s", LLM_MODEL, url)
 
-    async with httpx.AsyncClient(timeout=60.0) as client:
+    async with httpx.AsyncClient(timeout=120.0.0) as client:
         try:
             response = await client.post(url, json=payload, headers=llm_auth_headers)
             response.raise_for_status()
@@ -155,7 +155,9 @@ async def call_llm(reviews_text: str, product_name: Optional[str] = None) -> dic
     raw_content = data["choices"][0]["message"]["content"]
     logger.debug("LLM 原始返回内容: %s", raw_content)
 
-    # ---- 解析 LLM 返回的 JSON ----
+     # ---- 解析 LLM 返回的 JSON ----     result = _parse_json(raw_content)     if result is None:         logger.error("JSON 解析失败: %s", raw_content[:500])         raise HTTPException(             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,             detail="大模型返回结果解析失败",         )     return result   def _parse_json(text: str) -> dict | None:     """多级 JSON 解析：直接解析 → Markdown 代码块 → 正则提取"""     try:         return json.loads(text)     except json.JSONDecodeError:         pass      match = re.search(r"```(?:json)?\s*
+?(.*?)
+?```", text, re.DOTALL)     if match:         try:             return json.loads(match.group(1).strip())         except json.JSONDecodeError:             pass      for m in re.finditer(r"\{", text):         depth = 0         start = m.start()         for i, ch in enumerate(text[start:], start):             if ch == "{":                 depth += 1             elif ch == "}":                 depth -= 1                 if depth == 0:                     try:                         return json.loads(text[start:i + 1])                     except json.JSONDecodeError:                         break             if depth > 50:                 break     return None
     try:
         result = json.loads(raw_content)
     except json.JSONDecodeError:
